@@ -22,7 +22,7 @@ export default {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(10, 70px);
-  grid-template-rows: repeat(10, 70px);
+  grid-template-rows: repeat(9, 70px);
   padding: 0;
 
   .bingo-table-item {
