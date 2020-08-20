@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="home-view">
+    <bingo-settings @on-settings-selected="setBingoSettings"></bingo-settings>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import bingoSettings from "@/components/bingoSettings.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    bingoSettings
+  },
+  methods: {
+    setBingoSettings(ev) {
+      console.log(ev);
+    }
   }
 };
 </script>
