@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view">
+  <div class="view home-view">
     <bingo-settings @on-settings-selected="setBingoSettings"></bingo-settings>
   </div>
 </template>
@@ -19,3 +19,11 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.home-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
