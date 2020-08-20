@@ -6,6 +6,7 @@
 
 <script>
 import bingoSettings from "@/components/bingoSettings.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -13,8 +14,12 @@ export default {
     bingoSettings
   },
   methods: {
+    ...mapActions({
+      add: "bingo/increment"
+    }),
     setBingoSettings(ev) {
       console.log(ev);
+      this.add();
     }
   }
 };
