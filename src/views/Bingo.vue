@@ -15,15 +15,34 @@
         <p>premio total: 7€</p>
       </div>
     </div>
+    <p>traza: {{ bingoSettings }}</p>
     <bingo-table></bingo-table>
   </div>
 </template>
 
 <script>
 import bingoTable from "@/components/bingoTable.vue";
+import { mapGetters } from "vuex";
+
 export default {
   components: {
     bingoTable
+  },
+  computed: {
+    ...mapGetters({
+      bingoSettings: "bingo/settings"
+    })
+  },
+  mounted() {
+    const areSettingsFilled = this._validateBingoSettings(this.bingoSettings);
+    if (!areSettingsFilled) {
+      this.$router.replace({ name: "Home" });
+    }
+  },
+  methods: {
+    _validateBingoSettings(settings) {
+      return Object.keys(settings).every(key => settings[key]);
+    }
   }
 };
 </script>

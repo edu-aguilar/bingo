@@ -8,7 +8,7 @@ const state = () => ({
 });
 
 const getters = {
-  bingoSettings: state => state.settings
+  settings: state => state.settings
 };
 
 const actions = {

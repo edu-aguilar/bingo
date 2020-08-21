@@ -1,6 +1,7 @@
 <template>
   <div class="view home-view">
-    <bingo-settings @on-settings-selected="updateBingoSettings"></bingo-settings>
+    <bingo-settings @on-settings-selected="updateBingoSettings">
+    </bingo-settings>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ export default {
           frequency: parseInt(ev.frequency)
         };
         this.setBingoSettings(settings);
+        this.$router.push({ name: "Bingo" });
       } catch (error) {
         throw Error(error);
       }
