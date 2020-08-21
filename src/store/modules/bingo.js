@@ -4,22 +4,37 @@ const state = () => ({
     bingoProfit: null,
     frequency: null
   },
-  currentGame: {}
+  currentGame: {
+    isRunning: false
+  }
 });
 
 const getters = {
-  settings: state => state.settings
+  settings: state => state.settings,
+  isRunning: state => state.currentGame.isRunning
 };
 
 const actions = {
   setSettings({ commit }, settings) {
     commit("updateSettings", settings);
+  },
+  start({ commit }) {
+    commit("startBingo");
+  },
+  pause({ commit }) {
+    commit("pauseBingo");
   }
 };
 
 const mutations = {
   updateSettings(state, newSettings) {
     state.settings = { ...newSettings };
+  },
+  startBingo(state) {
+    state.currentGame.isRunning = true;
+  },
+  pauseBingo(state) {
+    state.currentGame.isRunning = false;
   }
 };
 

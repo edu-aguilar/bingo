@@ -1,6 +1,12 @@
 <template>
   <div class="view bingo-view">
     <div class="bingo-view__bingo-data-wrapper">
+      <bingo-control
+        :isRunning="isBingoRunning"
+        @on-start-bingo="startBingo"
+        @on-pause-bingo="pauseBingo"
+      >
+      </bingo-control>
       <p class="bingo-view__bingo-data-wrapper__current-num">30</p>
       <ul class="bingo-view__bingo-data-wrapper__last-nums">
         <li>11</li>
@@ -24,15 +30,18 @@
 
 <script>
 import bingoTable from "@/components/bingoTable.vue";
-import { mapGetters } from "vuex";
+import bingoControl from "@/components/bingoControl.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
-    bingoTable
+    bingoTable,
+    bingoControl
   },
   computed: {
     ...mapGetters({
-      bingoSettings: "bingo/settings"
+      bingoSettings: "bingo/settings",
+      isBingoRunning: "bingo/isRunning"
     })
   },
   mounted() {
@@ -44,7 +53,11 @@ export default {
   methods: {
     _validateBingoSettings(settings) {
       return Object.keys(settings).every(key => settings[key]);
-    }
+    },
+    ...mapActions({
+      startBingo: "bingo/start",
+      pauseBingo: "bingo/pause"
+    })
   }
 };
 </script>
