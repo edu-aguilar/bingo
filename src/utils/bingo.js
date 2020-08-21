@@ -3,6 +3,6 @@ const generateRandomNumber = (min, max) => {
 };
 
 const MIN = 1;
-const MAX = 90;
+const MAX = 40;
 
 export { generateRandomNumber, MIN, MAX };
