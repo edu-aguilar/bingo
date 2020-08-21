@@ -1,6 +1,6 @@
 <template>
   <div class="view home-view">
-    <bingo-settings @on-settings-selected="setBingoSettings"></bingo-settings>
+    <bingo-settings @on-settings-selected="updateBingoSettings"></bingo-settings>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     ...mapActions({
       setBingoSettings: "bingo/setSettings"
     }),
-    setBingoSettings(ev) {
+    updateBingoSettings(ev) {
       try {
         const settings = {
           lineProfit: parseFloat(ev.lineProfit),
