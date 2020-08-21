@@ -10,12 +10,14 @@
         <li>87</li>
       </ul>
       <div class="bingo-view__bingo-data-wrapper__bingo-info">
-        <p>linea: 2€</p>
-        <p>bingo: 5€</p>
-        <p>premio total: 7€</p>
+        <p>Premio de la linea: {{ bingoSettings.lineProfit }}€</p>
+        <p>Premio del bingo: {{ bingoSettings.bingoProfit }}€</p>
+        <p>
+          premio total:
+          {{ bingoSettings.lineProfit + bingoSettings.bingoProfit }}€
+        </p>
       </div>
     </div>
-    <p>traza: {{ bingoSettings }}</p>
     <bingo-table></bingo-table>
   </div>
 </template>
