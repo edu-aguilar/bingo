@@ -1,4 +1,9 @@
-import { generateRandomNumber, MIN, MAX } from "../../utils/bingo";
+import {
+  generateRandomNumber,
+  MIN,
+  MAX,
+  LAST_NUMBERS_TO_SHOW
+} from "../../utils/bingo";
 
 let pid;
 
@@ -19,7 +24,16 @@ const state = () => ({
 const getters = {
   settings: state => state.settings,
   isRunning: state => state.currentGame.isRunning,
-  isStarted: state => state.currentGame.isStarted
+  isStarted: state => state.currentGame.isStarted,
+  lastNumber: state => state.currentGame.numbers[0],
+  lastNumbers: state => {
+    const nums = state.currentGame.numbers;
+    if (nums.length <= LAST_NUMBERS_TO_SHOW) {
+      return nums.slice(1, nums.length);
+    } else {
+      return nums.slice(1, LAST_NUMBERS_TO_SHOW + 1);
+    }
+  }
 };
 
 const actions = {
@@ -75,7 +89,7 @@ const mutations = {
     state.currentGame.isRunning = true;
   },
   addNumber(state, newNumber) {
-    state.currentGame.numbers.push(newNumber);
+    state.currentGame.numbers.unshift(newNumber);
   },
   finishBingo(state) {
     state.currentGame.isFinished = true;

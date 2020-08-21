@@ -9,13 +9,17 @@
         @on-continue-bingo="continueBingo"
       >
       </bingo-control>
-      <p class="bingo-view__bingo-data-wrapper__current-num">30</p>
+      <p class="bingo-view__bingo-data-wrapper__current-num">
+        {{ lastNumber }}
+      </p>
       <ul class="bingo-view__bingo-data-wrapper__last-nums">
-        <li>11</li>
-        <li>2</li>
-        <li>67</li>
-        <li>34</li>
-        <li>87</li>
+        <li
+          class="bingo-table-item"
+          v-for="(item, index) in lastNumbers"
+          :key="index"
+        >
+          <span>{{ item }}</span>
+        </li>
       </ul>
       <div class="bingo-view__bingo-data-wrapper__bingo-info">
         <p>Premio de la linea: {{ bingoSettings.lineProfit }}€</p>
@@ -44,7 +48,9 @@ export default {
     ...mapGetters({
       bingoSettings: "bingo/settings",
       isBingoRunning: "bingo/isRunning",
-      isBingoStarted: "bingo/isStarted"
+      isBingoStarted: "bingo/isStarted",
+      lastNumber: "bingo/lastNumber",
+      lastNumbers: "bingo/lastNumbers"
     })
   },
   mounted() {
