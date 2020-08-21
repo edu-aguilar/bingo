@@ -1,3 +1,5 @@
+import { generateRandomNumber, MIN, MAX } from "../../utils/bingo";
+
 const state = () => ({
   settings: {
     lineProfit: null,
@@ -6,7 +8,8 @@ const state = () => ({
   },
   currentGame: {
     isRunning: false,
-    isStarted: false
+    isStarted: false,
+    numbers: []
   }
 });
 
@@ -20,14 +23,33 @@ const actions = {
   setSettings({ commit }, settings) {
     commit("updateSettings", settings);
   },
-  start({ commit }) {
+  start({ commit, dispatch, state }) {
     commit("startBingo");
+    dispatch("calculateNum", state.settings.frequency);
   },
   pause({ commit }) {
     commit("pauseBingo");
   },
   unpause({ commit }) {
     commit("unpauseBingo");
+  },
+  calculateNum({ commit, state }, frequency) {
+    const calculateNextNumber = () => {
+      let number = generateRandomNumber(MIN, MAX);
+      while (state.currentGame.numbers.includes(number)) {
+        number = generateRandomNumber(MIN, MAX);
+      }
+      return number;
+    };
+
+    const pid = setInterval(() => {
+      if (state.currentGame.numbers.length === MAX) {
+        clearInterval(pid);
+        return;
+      }
+      const newNumber = calculateNextNumber();
+      commit("addNumber", newNumber);
+    }, frequency);
   }
 };
 
@@ -44,6 +66,9 @@ const mutations = {
   },
   unpauseBingo(state) {
     state.currentGame.isRunning = true;
+  },
+  addNumber(state, newNumber) {
+    state.currentGame.numbers.push(newNumber);
   }
 };
 
