@@ -3,8 +3,10 @@
     <div class="bingo-view__bingo-data-wrapper">
       <bingo-control
         :isRunning="isBingoRunning"
+        :isStarted="isBingoStarted"
         @on-start-bingo="startBingo"
         @on-pause-bingo="pauseBingo"
+        @on-continue-bingo="continueBingo"
       >
       </bingo-control>
       <p class="bingo-view__bingo-data-wrapper__current-num">30</p>
@@ -41,7 +43,8 @@ export default {
   computed: {
     ...mapGetters({
       bingoSettings: "bingo/settings",
-      isBingoRunning: "bingo/isRunning"
+      isBingoRunning: "bingo/isRunning",
+      isBingoStarted: "bingo/isStarted"
     })
   },
   mounted() {
@@ -56,7 +59,8 @@ export default {
     },
     ...mapActions({
       startBingo: "bingo/start",
-      pauseBingo: "bingo/pause"
+      pauseBingo: "bingo/pause",
+      continueBingo: "bingo/unpause"
     })
   }
 };

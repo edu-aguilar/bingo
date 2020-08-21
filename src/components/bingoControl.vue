@@ -1,8 +1,15 @@
 <template>
   <div class="bingo-control-wrapper">
     <ul class="bingo-control-wrapper__options">
-      <li><button :disabled="isRunning" @click="onStart">Start</button></li>
-      <li><button :disabled="!isRunning" @click="onPause">Pause</button></li>
+      <li v-if="!isStarted">
+        <button :disabled="isStarted" @click="onStart">Start</button>
+      </li>
+      <li v-if="isStarted">
+        <button :disabled="isRunning" @click="onContinue">Continuar</button>
+      </li>
+      <li v-if="isStarted">
+        <button :disabled="!isRunning" @click="onPause">Pause</button>
+      </li>
     </ul>
   </div>
 </template>
@@ -14,6 +21,10 @@ export default {
     isRunning: {
       type: Boolean,
       required: true
+    },
+    isStarted: {
+      type: Boolean,
+      required: true
     }
   },
   methods: {
@@ -22,6 +33,9 @@ export default {
     },
     onPause() {
       this.$emit("on-pause-bingo");
+    },
+    onContinue() {
+      this.$emit("on-continue-bingo");
     }
   }
 };

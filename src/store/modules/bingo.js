@@ -5,13 +5,15 @@ const state = () => ({
     frequency: null
   },
   currentGame: {
-    isRunning: false
+    isRunning: false,
+    isStarted: false
   }
 });
 
 const getters = {
   settings: state => state.settings,
-  isRunning: state => state.currentGame.isRunning
+  isRunning: state => state.currentGame.isRunning,
+  isStarted: state => state.currentGame.isStarted
 };
 
 const actions = {
@@ -23,6 +25,9 @@ const actions = {
   },
   pause({ commit }) {
     commit("pauseBingo");
+  },
+  unpause({ commit }) {
+    commit("unpauseBingo");
   }
 };
 
@@ -31,10 +36,14 @@ const mutations = {
     state.settings = { ...newSettings };
   },
   startBingo(state) {
+    state.currentGame.isStarted = true;
     state.currentGame.isRunning = true;
   },
   pauseBingo(state) {
     state.currentGame.isRunning = false;
+  },
+  unpauseBingo(state) {
+    state.currentGame.isRunning = true;
   }
 };
 
