@@ -1,14 +1,27 @@
-const state = () => ({});
+const state = () => ({
+  settings: {
+    lineProfit: null,
+    bingoProfit: null,
+    frequency: null
+  },
+  currentGame: {}
+});
 
-const getters = {};
+const getters = {
+  bingoSettings: state => state.settings
+};
 
 const actions = {
-  increment() {
-    console.log("action");
+  setSettings({ commit }, settings) {
+    commit("updateSettings", settings);
   }
 };
 
-const mutations = {};
+const mutations = {
+  updateSettings(state, newSettings) {
+    state.settings = { ...newSettings };
+  }
+};
 
 export default {
   namespaced: true,

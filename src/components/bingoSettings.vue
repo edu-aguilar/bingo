@@ -2,16 +2,16 @@
   <div class="bingo-settings-wrapper">
     <form class="bingo-settings-wrapper__form">
       <div>
-        <label for="linePrice">Cuantía línea: </label>
-        <input id="linePrice" type="number" v-model="linePrice" />
+        <label for="lineProfit">Cuantía línea: </label>
+        <input id="lineProfit" type="number" v-model="lineProfit" />
       </div>
       <div>
-        <label for="bingoPrice">Cuantía bingo: </label>
-        <input id="bingoPrice" type="number" v-model="bingoPrice" />
+        <label for="bingoProfit">Cuantía bingo: </label>
+        <input id="bingoProfit" type="number" v-model="bingoProfit" />
       </div>
       <div>
         <label for="timing">Tiempo entre números: </label>
-        <input id="timing" type="number" v-model="bingoFrequency" />
+        <input id="timing" type="number" v-model="frequency" />
       </div>
     </form>
     <button
@@ -29,25 +29,23 @@ export default {
   name: "BingoSettings",
   data() {
     return {
-      linePrice: 0,
-      bingoPrice: 0,
-      bingoFrequency: 4000
+      lineProfit: 0,
+      bingoProfit: 0,
+      frequency: 4000
     };
   },
   methods: {
     startBingo() {
       this.$emit("on-settings-selected", {
-        linePrice: this.linePrice,
-        bingoPrice: this.bingoPrice,
-        bingoFrequency: this.bingoFrequency
+        lineProfit: this.lineProfit,
+        bingoProfit: this.bingoProfit,
+        frequency: this.frequency
       });
     }
   },
   computed: {
     areSettingsValid() {
-      return (
-        this.linePrice > 0 && this.bingoPrice > 0 && this.bingoFrequency > 0
-      );
+      return this.lineProfit > 0 && this.bingoProfit > 0 && this.frequency > 0;
     }
   }
 };

@@ -15,11 +15,19 @@ export default {
   },
   methods: {
     ...mapActions({
-      add: "bingo/increment"
+      setBingoSettings: "bingo/setSettings"
     }),
     setBingoSettings(ev) {
-      console.log(ev);
-      this.add();
+      try {
+        const settings = {
+          lineProfit: parseFloat(ev.lineProfit),
+          bingoProfit: parseFloat(ev.bingoProfit),
+          frequency: parseInt(ev.frequency)
+        };
+        this.setBingoSettings(settings);
+      } catch (error) {
+        throw Error(error);
+      }
     }
   }
 };
