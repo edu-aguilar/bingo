@@ -30,7 +30,7 @@
         </p>
       </div>
     </div>
-    <bingo-table></bingo-table>
+    <bingo-table :lastNumber="lastNumber"></bingo-table>
   </div>
 </template>
 

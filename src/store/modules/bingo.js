@@ -33,7 +33,8 @@ const getters = {
     } else {
       return nums.slice(1, LAST_NUMBERS_TO_SHOW + 1);
     }
-  }
+  },
+  filledNumbers: state => state.currentGame.numbers
 };
 
 const actions = {
