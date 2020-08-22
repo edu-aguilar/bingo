@@ -1,5 +1,6 @@
 <template>
   <div class="view home-view">
+    <h1 class="title">Bingo Sicomoro 3</h1>
     <bingo-settings @on-settings-selected="updateBingoSettings">
     </bingo-settings>
   </div>
@@ -40,5 +41,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  .title {
+    margin-top: -10rem;
+    margin-bottom: 3rem;
+    font-size: 60px;
+  }
 }
 </style>

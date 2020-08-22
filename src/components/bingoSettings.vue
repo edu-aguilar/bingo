@@ -1,15 +1,15 @@
 <template>
   <div class="bingo-settings-wrapper">
     <form class="bingo-settings-wrapper__form">
-      <div>
+      <div class="bingo-settings-wrapper__form__field">
         <label for="lineProfit">Cuantía línea: </label>
         <input id="lineProfit" type="number" v-model="lineProfit" />
       </div>
-      <div>
+      <div class="bingo-settings-wrapper__form__field">
         <label for="bingoProfit">Cuantía bingo: </label>
         <input id="bingoProfit" type="number" v-model="bingoProfit" />
       </div>
-      <div>
+      <div class="bingo-settings-wrapper__form__field">
         <label for="timing">Tiempo entre números: </label>
         <input id="timing" type="number" v-model="frequency" />
       </div>
@@ -58,10 +58,16 @@ export default {
       display: inline-block;
       width: 200px;
     }
+
+    &__field + &__field {
+      font-size: 18px;
+      margin-top: 1rem;
+    }
   }
   &__button {
     margin-top: 2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
+    min-height: 48px;
   }
 }
 </style>
