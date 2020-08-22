@@ -1,6 +1,11 @@
 <template>
   <ul class="bingo-table-wrapper">
-    <li class="bingo-table-item" v-for="(item, index) in items" :key="index" :id="[`${index+1}`]">
+    <li
+      class="bingo-table-item"
+      v-for="(item, index) in items"
+      :key="index"
+      :id="[`${index + 1}`]"
+    >
       <span>{{ index + 1 }}</span>
     </li>
   </ul>
@@ -21,7 +26,7 @@ export default {
   },
   watch: {
     lastNumber: function(newNumber) {
-      document.getElementById(newNumber).classList.add('filled')
+      document.getElementById(newNumber).classList.add("filled");
     }
   }
 };
