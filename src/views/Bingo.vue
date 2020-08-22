@@ -22,10 +22,12 @@
         </li>
       </ul>
       <div class="bingo-view__bingo-data-wrapper__bingo-info">
-        <p>Premio de la linea: {{ bingoSettings.lineProfit }}€</p>
-        <p>Premio del bingo: {{ bingoSettings.bingoProfit }}€</p>
+        <p class="title">Premios:</p>
+        <p>Linea: {{ bingoSettings.lineProfit }}€</p>
+        <p>Bingo: {{ bingoSettings.bingoProfit }}€</p>
+        <hr />
         <p>
-          premio total:
+          Total:
           {{ bingoSettings.lineProfit + bingoSettings.bingoProfit }}€
         </p>
       </div>
@@ -68,6 +70,25 @@ export default {
       pauseBingo: "bingo/pause",
       continueBingo: "bingo/unpause"
     })
+  },
+  data() {
+    return {
+      speech: new SpeechSynthesisUtterance()
+    };
+  },
+  watch: {
+    lastNumber: function(newNumber) {
+      this.speech.text = newNumber;
+      window.speechSynthesis.speak(this.speech);
+      const numberAsString = "" + newNumber;
+      if (numberAsString.length === 2) {
+        numberAsString.split("").forEach(number => {
+          const voice = new SpeechSynthesisUtterance();
+          voice.text = number;
+          window.speechSynthesis.speak(voice);
+        });
+      }
+    }
   }
 };
 </script>
@@ -104,6 +125,15 @@ export default {
     &__bingo-info {
       flex-grow: 1;
       text-align: center;
+
+      p.title {
+        font-size: 22px;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 18px;
+      }
     }
   }
 }
