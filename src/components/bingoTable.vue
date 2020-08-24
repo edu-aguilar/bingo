@@ -6,7 +6,7 @@
       :key="index"
       :id="[`${index + 1}`]"
     >
-      <span>{{ index + 1 }}</span>
+      <span class="number">{{ index + 1 }}</span>
     </li>
   </ul>
 </template>
@@ -36,8 +36,8 @@ export default {
 .bingo-table-wrapper {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(10, 70px);
-  grid-template-rows: repeat(9, 70px);
+  grid-template-columns: repeat(10, 90px);
+  grid-template-rows: repeat(9, 90px);
   padding: 0;
 
   .bingo-table-item {
@@ -48,6 +48,10 @@ export default {
     justify-content: center;
     margin: 6px;
     font-weight: bold;
+
+    .number {
+      font-size: 30px;
+    }
 
     &.filled {
       background-color: lightblue;
