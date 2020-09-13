@@ -2,13 +2,13 @@
   <div class="bingo-control-wrapper">
     <ul class="bingo-control-wrapper__options">
       <li v-if="!isStarted">
-        <button :disabled="isStarted" @click="onStart">Start</button>
+        <button :disabled="isStarted" @click="onStart">Empezar</button>
       </li>
       <li v-if="isStarted">
         <button :disabled="isRunning" @click="onContinue">Continuar</button>
       </li>
       <li v-if="isStarted">
-        <button :disabled="!isRunning" @click="onPause">Pause</button>
+        <button :disabled="!isRunning" @click="onPause">Pausar</button>
       </li>
     </ul>
   </div>
@@ -49,6 +49,11 @@ export default {
 
     li + li {
       margin-left: 2rem;
+    }
+
+    button {
+      min-height: 48px;
+      min-width: 48px;
     }
   }
 }

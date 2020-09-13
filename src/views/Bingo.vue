@@ -117,8 +117,14 @@ export default {
       flex-grow: 1;
 
       li {
-        font-size: 70px;
+        font-size: 40px;
         font-weight: 400;
+      }
+
+      @media screen and (min-width: 1200px) {
+        li {
+          font-size: 70px;
+        }
       }
     }
 

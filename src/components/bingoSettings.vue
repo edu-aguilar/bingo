@@ -63,6 +63,10 @@ export default {
       font-size: 18px;
       margin-top: 1rem;
     }
+
+    input {
+      min-height: 30px;
+    }
   }
   &__button {
     margin-top: 2rem;

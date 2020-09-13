@@ -36,8 +36,8 @@ export default {
 .bingo-table-wrapper {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(10, 90px);
-  grid-template-rows: repeat(9, 90px);
+  grid-template-columns: repeat(10, 65px);
+  grid-template-rows: repeat(9, 65px);
   padding: 0;
 
   .bingo-table-item {
@@ -46,15 +46,28 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 6px;
+    margin: 3px;
     font-weight: bold;
 
     .number {
-      font-size: 30px;
+      font-size: 20px;
     }
 
     &.filled {
       background-color: lightblue;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(10, 90px);
+    grid-template-rows: repeat(9, 90px);
+
+    .bingo-table-item {
+      margin: 6px;
+
+      .number {
+        font-size: 30px;
+      }
     }
   }
 }
